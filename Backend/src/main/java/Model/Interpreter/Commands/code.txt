@@ -1,0 +1,34 @@
+var brakes = bind "/controls/flight/speedbreak"
+var throttle = bind "/controls/engines/engine[0]/throttle"
+var heading = bind "/instrumentation/heading-indicator/offset-deg"
+var airspeed = bind "/instrumentation/airspeed-indicator/indicated-speed-kt"
+var roll = bind "/instrumentation/attitude-indicator/indicated-roll-deg"
+var pitch = bind "/instrumentation/attitude-indicator/internal-pitch-deg"
+var rudder = bind "/controls/flight/rudder"
+var aileron = bind "/controls/flight/aileron[0]"
+var elevator = bind "/controls/flight/elevator"
+var alt = bind "/instrumentation/altimeter/indicated-altitude-ft"
+throttle = 1
+var h = heading
+print h
+var minus = 0-1
+var a = alt
+sleep 400
+print start
+print a
+while a-alt > minus*50 {
+rudder = (h-heading)/20
+aileron = minus * roll / 70
+elevator = pitch / 50
+print alt
+sleep 50
+}
+print change
+while alt < 1000 {
+rudder = (h-heading)/200
+aileron = minus * roll / 200
+elevator = pitch / 50
+print alt
+sleep 100
+}
+print "done"
